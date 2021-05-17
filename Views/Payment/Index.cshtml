@@ -1,0 +1,40 @@
+﻿@model RazorPayWeb.Models.PaymentModel
+@{
+    ViewData["Title"] = "Initiate Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <form asp-controller="Payment" asp-action="IntiatePayment">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label class="control-label"> Customer name</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label"> Email</label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label"> Address</label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label"> Amount (INR)</label>
+                <input asp-for="amount" class="form-control" />
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary">Intiate Payment</button>
+            </div>
+        </div>
+    </form>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    }
+</div>
